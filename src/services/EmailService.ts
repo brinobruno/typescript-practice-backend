@@ -15,7 +15,11 @@ interface IMessageDTO {
   message: IMailMessage
 }
 
-export class EmailService {
+interface IEmailService {
+  sendMail(request: IMessageDTO): void
+}
+
+export class EmailService implements IEmailService {
   sendMail({ to, message }: IMessageDTO) {
     console.log(`email sent to ${to.name}: ${message.subject}`)
   }
