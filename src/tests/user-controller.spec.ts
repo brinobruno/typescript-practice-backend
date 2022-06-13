@@ -15,9 +15,10 @@ describe('Email service use case', () => {
     
     const response = await request(app).get('/users/create', () => {
       const emailService = new EmailService()
-      emailService.sendMail(
-        repository.mailTo, repository.subject
-      )
+      emailService.sendMail({
+        to: repository.mailTo,
+        message: repository.subject
+      })
     })
     expect(response).toBeTruthy()
   })

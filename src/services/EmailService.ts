@@ -9,8 +9,14 @@ interface IMailMessage {
   attachment ?: string[]
 }
 
+// Data Transfer Object
+interface IMessageDTO { 
+  to: IMailTo
+  message: IMailMessage
+}
+
 export class EmailService {
-  sendMail(to: IMailTo, message: IMailMessage) {
+  sendMail({ to, message }: IMessageDTO) {
     console.log(`email sent to ${to.name}: ${message.subject}`)
   }
 }
